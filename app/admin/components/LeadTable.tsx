@@ -2,7 +2,7 @@
 
 import { useState, useTransition, useRef, useCallback } from 'react'
 import { updateLeadStatus, updateAdminNotes, updateLeadDetails } from '@/lib/actions'
-import type { BetaLead } from '../../../../generated/prisma'
+import type { BetaLead } from '@/generated/prisma'
 
 interface LeadTableProps {
   leads: BetaLead[]

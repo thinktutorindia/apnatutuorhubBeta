@@ -5,7 +5,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 import KpiCards from './KpiCards'
 import LeadTable from './LeadTable'
 import AddLeadModal from './AddLeadModal'
-import type { BetaLead } from '../../../../generated/prisma'
+import type { BetaLead } from '@/generated/prisma'
 
 interface AdminDashboardProps {
   leads: BetaLead[]

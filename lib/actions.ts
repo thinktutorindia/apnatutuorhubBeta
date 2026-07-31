@@ -269,7 +269,7 @@ export async function updateLeadDetails(
         ...(data.documentsNotes !== undefined && { documentsNotes: data.documentsNotes }),
         ...(data.notes !== undefined && { notes: data.notes }),
         ...(data.adminNotes !== undefined && { adminNotes: data.adminNotes }),
-        ...(data.city !== undefined && { city: data.city }),
+        ...(data.city != null && { city: data.city }),
       },
     })
     revalidatePath('/admin')
