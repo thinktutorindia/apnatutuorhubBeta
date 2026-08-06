@@ -9,11 +9,13 @@ const globalForPrisma = globalThis as unknown as {
 function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL
   
+  if (!connectionString) {
+    console.warn('DATABASE_URL is not configured in environment variables.')
+  }
+  
   const pool = new Pool({
-    connectionString,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    connectionString: connectionString || undefined,
+    ssl: connectionString?.includes('localhost') ? false : { rejectUnauthorized: false },
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 10000,
@@ -26,4 +28,3 @@ function createPrismaClient() {
 export const prisma = globalForPrisma.prisma ?? createPrismaClient()
 
 globalForPrisma.prisma = prisma
-
